@@ -1,46 +1,44 @@
-# === CIFRADOR SIMPLES ===
+    # === CIFRADOR SIMPLES ===
 
 def inverter(msg):
-    return msg[::-1]
+        return msg[::-1]
 
 def deslocamento(msg, n):
-    alfabeto = "abcdefghijklmnopqrstuvwxyz"
-    resultado = ""
+        alfabeto = "abcdefghijklmnopqrstuvwxyz"
+        resultado = ""
 
-    for letra in msg:
-        if letra.lower() in alfabeto:
-            pos = alfabeto.index(letra.lower())
-            nova = alfabeto[(pos + n) % 26]
+        for letra in msg:
+            if letra.lower() in alfabeto:
+                pos = alfabeto.index(letra.lower())
+                nova = alfabeto[(pos + n) % 26]
 
-            if letra.isupper():
-                nova = nova.upper()
+                if letra.isupper():
+                    nova = nova.upper()
 
-            resultado += nova
-        else:
-            resultado += letra
+                resultado += nova
+            else:
+                resultado += letra
 
-    return resultado
+        return resultado
 
 def substituicao(msg, original, novo):
-    resultado = ""
+        resultado = ""
 
-    for letra in msg:
-        if letra.lower() in original:
-            i = original.index(letra.lower())
-            nova = novo[i]
+        for letra in msg:
+            if letra.lower() in original:
+                i = original.index(letra.lower())
+                nova = novo[i]
 
-            if letra.isupper():
-                nova = nova.upper()
+                if letra.isupper():
+                    nova = nova.upper()
 
-            resultado += nova
-        else:
-            resultado += letra
+                resultado += nova
+            else:
+                resultado += letra
 
-    return resultado
-
+        return resultado
 
 # ===== PROGRAMA PRINCIPAL =====
-
 arquivo = input("Digite o nome do arquivo: ")
 
 with open(arquivo, "r", encoding="utf-8") as f:
@@ -52,6 +50,7 @@ print("\nEscolha o método:")
 print("1 - Inverter")
 print("2 - Deslocamento")
 print("3 - Substituição")
+print("4 - Sair")
 
 opcao = input("Opção: ")
 
@@ -66,6 +65,10 @@ elif opcao == "3":
     with open("alfabeto1.txt") as f:
         linhas = f.read().splitlines()
     resultado = substituicao(mensagem, linhas[0], linhas[1])
+
+elif opcao == "4":
+     print("Programa encerrado")
+     exit()
 
 else:
     print("Opção inválida")
